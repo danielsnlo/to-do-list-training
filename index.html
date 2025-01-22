@@ -19,10 +19,19 @@
       btn.addEventListener("click", function () {
         if (userInput.value === "") return;
         const li = document.createElement("li");
-        li.innerHTML = `${userInput.value} <button>Dzēst</button>`;
+        li.innerHTML = `${userInput.value} <button data-action="delete" >Dzēst</button>`;
         ul.appendChild(li);
         userInput.value = "";
       });
+
+      ul.addEventListener("click", handleClickUL);
+
+      function handleClickUL(event) {
+        let target = event.target;
+        if (target.dataset.action === "delete") {
+          target.parentNode.remove();
+        }
+      }
     </script>
   </body>
 </html>
